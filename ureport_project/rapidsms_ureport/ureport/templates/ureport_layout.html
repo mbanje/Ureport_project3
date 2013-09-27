@@ -41,52 +41,51 @@
 {% endblock %}
 
 </head>
-
-
-
 <body>
-	
 	<div class="banner">
-		<div class="image_ban">
-			<img src="{{ STATIC_URL }}ureport/images/ureport_logo_1.png" width="100%" height="116" alt="ureport logo" />
-		</div>
-        <div class="nav">
-			<ul class="nav nav-pills">
-				<li class="active"> <a href="/about_ureport/">A PROPOS <br />DE UREPORT</a>  </li>
-				<li class="active"> <a href="/#poll_results/">RÉSULTATS <br />SONDAGES</a>   </li>
-				<li class="active"> <a href="/">NATIONAL<br />PULSE</a>  </li>
-		  		<li class="active"> <a href="/join/">COMMENT<br />PARTICIPER</a>  </li>
-		  		<li class="active"> <a href="/media/"><br />READ</a>  </li>
-		  		<li class="active"> <a href="/media/"><br />WATCH</a>  </li>
-		  		<li class="active"> <a href="/media/"><br />ENGAGE</a>  </li>
-		  		<li class="active"> <a href="/media/"><br />GET IN TOUCH</a>  </li>
-			</ul> 
-		</div>
-		  	
-		<div class="ureporters_info">
+	<div class="ureporters_info">
 	            <span id="span_total">{{ total_ureporters|intcomma }}</span><br /><span id="span_info" >membres jusqu'à ce jours </span>         
 	        </div>
+        	<div class="image_ban">
+        		<img src="{{ STATIC_URL }}ureport/images/ureport_logo_1.png" width="100%" height="116" alt="ureport logo" />
+          	</div>
+          	<div class="nav">
+		          <ul class="nav nav-pills">
+		          	<li class="active"><a href="/about_ureport/">A PROPOS <br />DE UREPORT</a></li>
+		  			<!--<li class="active"><a href="/#poll_results/">RÉSULTATS <br />SONDAGES</a></li>-->
+		  			
+		  			<li class="active"><a href="/resultats_sondage/">RÉSULTATS <br />SONDAGES</a></li>
+		  			
+		  			<li class="active"><a href="/national_pulse/">NATIONAL<br />PULSE</a></li>
+		  			<li class="active"><a href="/join/">COMMENT<br />PARTICIPER</a></li>
+		  			<li class="active"><a href="/media/"><br />READ</a></li>
+		  			<li class="active"><a href="/media/"><br />WATCH</a></li>
+		  			<li class="active"><a href="/engage/"><br />ENGAGE</a></li>
+		  			<li class="active"><a href="/media/"><br />GET IN TOUCH</a></li>
+		  			
+				  </ul> 
+		  	</div>
+	        
         </div>
-		<div class="container container-fluid" style="background-color:#01a3ee;">
-        
+    <div class="container container-fluid" style="background-color:#01a3ee;">
         
         <div class="content">
-        	{% block content %}
         	
+            {% block content %}
             {% endblock %}
         </div>
         
-	</div>
-	
-	
-	
-	
-	<div class="footerlinks">
-		<div class="nav-bottom">
-			<ul>
-				<li class="first"><a href="/">Home</a></li>
-	            <li><a href="#">Site Map</a></li>
-	            <li><a href="#">Contact Us</a></li>
+		
+		
+	      
+	       
+	    </div>
+	    <div class="footerlinks">
+	           <div class="nav-bottom">
+                <ul>
+	                <li class="first"><a href="/">Home</a></li>
+	                 <li><a href="#">Site Map</a></li>
+	                <li><a href="#">Contact Us</a></li>
 	                {% if user.is_authenticated %}
 	                   <li><a href="{% url "ureport-polls" %}">Poll Admin</a></li>
 	                   <li><a href="{% url "messagelog" %}">Message Log</a></li>
@@ -97,10 +96,10 @@
 	                {% else %}
 	                   <li><a href="/accounts/login">LOGIN</a></li>
 	                {% endif %}
-             </ul>
-		</div>
-	           <p>Copyright &copy; 2010 - 2012 UNICEF et al.</p>
-	</div>
+                </ul>
+	           </div>
+	           <p>Copyright &copy; 2010 - 2013 UNICEF et al.</p>
+	        </div>
         <script type="text/javascript" src="{{ STATIC_URL }}rapidsms/javascripts/collapse.js"></script>
 		{% block javascripts %}
 		{% endblock %}

@@ -28,18 +28,13 @@ body{
 
 div.content {
 	position:relative;
+	margin-bottom: 110px;
+	margin-left: 20px;
     float: left;
     top:94px;
     width: 660px;
     padding: 0px;
-}
-
-div.content-wide {
-	position:relative;
-    float: left;
-    top:94px;
-    width: 100%;
-    padding: 0px;
+	margin-top: 60px;
 }
 
 div#poll_results_transparent{
@@ -55,12 +50,13 @@ div#poll_results_transparent{
 }
 
 div.sidebar {
-	position:relative;
-	margin-top:500px;
+	position:relative; 
+	margin-top: 195px;
 	width: 260px;
-	float: right;
-	padding: 0px 0px 0px 10px;
-	border-left: 1px solid #CCCCCC;
+	float: left;
+	padding: 0px 5px 5px 10px;
+	border-right: 1px solid #CCCCCC;
+
 }
 
 /**
@@ -252,7 +248,7 @@ div.why-placeholder span {
 .footerlinks {
     text-align:center;
     width:100%;
-    background-color: #797979;
+    background-color: #0076ad;
     color: white;
     float:left;
     height:100%;
@@ -417,12 +413,13 @@ div.why-placeholder span {
 }
 .step_txt{
     color:#7dafc3;
-    min-height: 42px;
+    min-height: 50px;
 }
 .step img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 
@@ -564,16 +561,6 @@ ul.tabs .tab-label {
 .nav ul li a:hover {
 	background-color: #00638A;
 }
-
-.login-logout {
-	float:right;
-	margin-top:-40px;
-	color: #FFFFFF;
-	width:200px;
-	height:20px;
-	background:red;
-	
-}
 .ureporters_info {
 	float:right;
 	margin-top:-60px;
@@ -638,7 +625,7 @@ div.poll-responses span.participants {
 		background: #00AFEE;
 		color:#4B494C;
 		font-weight: bold;
-		height: 200px;
+		height: 250px;
 		-moz-border-radius:15px;
   		-webkit-border-radius:15px;
   		border-radius:15px;
@@ -711,7 +698,7 @@ div#sondages {
 
 #sondages div.news_column {
     float: left;
-    width: 30%;
+    width: 48%;
     margin: 5px;
     height:150px;   
 }
@@ -776,7 +763,7 @@ div#activities {
 
 #activities div.activities_column {
     float: left;
-    width: 30%;
+    width: 48%;
     margin: 5px;
     height:150px;   
 }
