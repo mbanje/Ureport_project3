@@ -1,1 +1,8 @@
-<h1>WELCOME TO SCOUT PAGE</h1>
+<ul>
+	<h2>Les reponses des scouts</h2>
+{% for r in responses %}
+<li>
+    {{ r.message }}
+</li>
+{% endfor %}
+</ul>

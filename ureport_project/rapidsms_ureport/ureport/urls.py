@@ -23,12 +23,14 @@ urlpatterns = patterns('',
                        # dashboard view for viewing all poll reports in one place
                        url(r'^dashboard/$', poll_dashboard, name="poll_dashboard"),
                       
+
+					   
+					   
 					   url(r'^responses/scouts/(\d+)/$', view_scouts_responses, name='respo_of_scouts'),
 					   url(r'^responses/guides/(\d+)/$', view_scouts_responses, name='respo_of_guides'),
 					   url(r'^responses/redcross/(\d+)/$', view_scouts_responses, name='respo_of_r_c'),
 					   
-
-
+					   
                        # ureporters (contact management views)
                        url(r'^reporter/$', ureporters, name="ureport-contact"),
                        url(r'^reporter/(?P<reporter_pk>\d+)/edit', editReporter, name="edit-reporter"),
