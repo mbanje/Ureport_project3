@@ -20,10 +20,15 @@ from rapidsms.backends.kannel.views import KannelBackendView
 admin.autodiscover()
 
 
+
+
+
+
+
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    # RapidSMS core URLs
-    (r'^accounts/', include('rapidsms.urls.login_logout')),
+# RapidSMS core URLs
+    url(r'^accounts/', include('rapidsms.urls.login_logout')),
 #     url(r'^$', 'rapidsms.views.dashboard', name='rapidsms-dashboard'),
     # RapidSMS contrib app URLs
 #    (r'^export/', include('rapidsms.contrib.export.urls')),
@@ -52,7 +57,7 @@ urlpatterns = patterns('',
     url(r'^about_ureport/$', TemplateView.as_view(template_name = 'ureport/about.html')),
     url(r'^engage/$', TemplateView.as_view(template_name = 'ureport/engage.html')),
     
-    (r'^ureport/', include('ureport.urls')),
+
     
     url(r'^national_pulse/$', TemplateView.as_view(template_name = 'ureport/national_pulse.html')),
     url(r'^media/$', TemplateView.as_view(template_name='ureport/media.html')),

@@ -27,6 +27,8 @@ urlpatterns = patterns('',
 					   url(r'^responses/guides/(\d+)/$', view_scouts_responses, name='respo_of_guides'),
 					   url(r'^responses/redcross/(\d+)/$', view_scouts_responses, name='respo_of_r_c'),
 					   
+
+
                        # ureporters (contact management views)
                        url(r'^reporter/$', ureporters, name="ureport-contact"),
                        url(r'^reporter/(?P<reporter_pk>\d+)/edit', editReporter, name="edit-reporter"),
@@ -170,5 +172,4 @@ urlpatterns = patterns('',
                        url(r"^dumpreport/(\d+)/$", generate_poll_dump_report),
                        url(r"^districtreport/(\d+)/$", generate_per_district_report),
                        url(r"^pulse/$", national_pulse, name='pulse_json')
-                       
 )

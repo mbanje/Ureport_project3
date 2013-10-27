@@ -490,7 +490,7 @@ def script_polls(request):
                    sort_column='start_date',
                    auto_reg=True,
                    sort_ascending=False,
-                   columns=columns)
+                   columns=columns),
               
 
               
