@@ -22,7 +22,11 @@ v1_api.register(ResponseResource())
 urlpatterns = patterns('',
                        # dashboard view for viewing all poll reports in one place
                        url(r'^dashboard/$', poll_dashboard, name="poll_dashboard"),
-
+                      
+					   url(r'^responses/scouts/(\d+)/$', view_scouts_responses, name='accuiel'),
+					   url(r'^responses/guides/(\d+)/$', view_scouts_responses, name='accuiel'),
+					   url(r'^responses/redcross/(\d+)/$', view_scouts_responses, name='accuiel'),
+					   
                        # ureporters (contact management views)
                        url(r'^reporter/$', ureporters, name="ureport-contact"),
                        url(r'^reporter/(?P<reporter_pk>\d+)/edit', editReporter, name="edit-reporter"),
@@ -166,4 +170,5 @@ urlpatterns = patterns('',
                        url(r"^dumpreport/(\d+)/$", generate_poll_dump_report),
                        url(r"^districtreport/(\d+)/$", generate_per_district_report),
                        url(r"^pulse/$", national_pulse, name='pulse_json')
+                       
 )

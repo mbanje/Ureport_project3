@@ -1,1 +1,8 @@
-<h1>WELCOME TO REDCROSS PAGE</h1>
+<ul>
+	<h2>Les reponses de ceux de la croix rouge</h2>
+{% for r in responses %}
+<li>
+    {{ r.message }}
+</li>
+{% endfor %}
+</ul>

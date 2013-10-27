@@ -491,3 +491,31 @@ def script_polls(request):
                    auto_reg=True,
                    sort_ascending=False,
                    columns=columns)
+              
+              
+              
+def view_scouts_responses(req, po):
+
+
+    responses= Response.objects.filter(contact__groups__name='scout',poll__pk=po)
+    template = 'ureport/scout_poll_results.html'
+    return render_to_response(template, {
+        'responses': responses,
+        })
+
+
+def view_guides_responses(req, pol):
+
+    responses= Response.objects.filter(contact__groups__name='guide',poll__pk=pol)
+    template = 'ureport/guide_poll_results.html'
+    return render_to_response(template, {
+        'responses': responses,
+        })
+        
+def view_redcross_responses(req, pol):
+
+    responses= Response.objects.filter(contact__groups__name='redcross',poll__pk=pol)
+    template = 'ureport/redcross_poll_results.html'
+    return render_to_response(template, {
+        'responses': responses,
+        })

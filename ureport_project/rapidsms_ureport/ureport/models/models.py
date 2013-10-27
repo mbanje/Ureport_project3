@@ -3,7 +3,7 @@
 
 from django.conf import settings
 from django.db import models
-from poll.models import Poll
+from poll.models import Poll, Response
 from rapidsms.models import Contact, Connection
 from django.contrib.auth.models import User, Group
 from rapidsms.contrib.locations.models import Location
@@ -16,6 +16,8 @@ from ussd.models import ussd_complete
 import datetime
 import re
 from script.signals import script_progress_was_completed
+
+
 
 
 class IgnoredTags(models.Model):
