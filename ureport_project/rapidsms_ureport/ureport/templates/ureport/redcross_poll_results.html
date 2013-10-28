@@ -1,3 +1,6 @@
+{% extends "ureport_layout.html" %}
+
+{% block content %}
 <ul>
 	<h2>Les reponses de ceux de la croix rouge</h2>
 {% for r in responses %}
@@ -6,3 +9,4 @@
 </li>
 {% endfor %}
 </ul>
+{% endblock %}

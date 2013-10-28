@@ -27,8 +27,8 @@ urlpatterns = patterns('',
 					   
 					   
 					   url(r'^responses/scouts/(\d+)/$', view_scouts_responses, name='respo_of_scouts'),
-					   url(r'^responses/guides/(\d+)/$', view_scouts_responses, name='respo_of_guides'),
-					   url(r'^responses/redcross/(\d+)/$', view_scouts_responses, name='respo_of_r_c'),
+					   url(r'^responses/guides/(\d+)/$', view_guides_responses, name='respo_of_guides'),
+					   url(r'^responses/redcross/(\d+)/$', view_redcross_responses, name='respo_of_r_c'),
 					   
 					   
                        # ureporters (contact management views)
