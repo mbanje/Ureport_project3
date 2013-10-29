@@ -57,7 +57,10 @@ urlpatterns = patterns('',
     url(r'^about_ureport/$', TemplateView.as_view(template_name = 'ureport/about.html')),
     url(r'^engage/$', TemplateView.as_view(template_name = 'ureport/engage.html')),
     
-
+    
+    url(r'^red_essaie/$', TemplateView.as_view(template_name = 'ureport/redcross_poll_results.html')),
+    
+	
     
     url(r'^national_pulse/$', TemplateView.as_view(template_name = 'ureport/national_pulse.html')),
     url(r'^media/$', TemplateView.as_view(template_name='ureport/media.html')),

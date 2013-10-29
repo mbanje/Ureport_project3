@@ -7,7 +7,7 @@ PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__),
 PROJECT_ROOT = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
 
 paths = [
-#         "rapidsms",
+         "rapidsms",
          "rapidsms_ureport",
          "rapidsms_polls",
          "django_eav",
@@ -154,7 +154,7 @@ ROOT_URLCONF = 'ureport_project.urls'
 WSGI_APPLICATION = 'ureport_project.wsgi.application'
 
 TEMPLATE_DIRS = (
-#     os.path.join(PROJECT_PATH, 'templates'),
+     os.path.join(PROJECT_PATH, 'templates'),
 )
 
 FIXTURE_DIRS = (

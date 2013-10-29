@@ -1,6 +1,9 @@
 {% extends "ureport_layout.html" %} 
 
+
+
 {% block content %}
+<div class="scout_results_principale">
 <ul>
 	<h2>Les reponses des scouts</h2>
 {% for r in responses %}
@@ -9,6 +12,7 @@
 </li>
 {% endfor %}
 </ul>
+</div>
 {% endblock %}
 
 
