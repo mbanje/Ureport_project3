@@ -22,14 +22,26 @@
 
 {% block content %}
 <div class="guide_results_principale">
-<ul>
-	<h2>Les reponses des guides</h2>
-{% for r in responses %}
-<li>
-    {{ r.message }}
-</li>
-{% endfor %}
-</ul>
+	
+	
+{% if poll %}
+
+	<h2>RESPONSES OF GUIDES ON THE POLL :<br />
+	"{{poll.question}}"
+	</h2>
+	<ul>
+		{% for r in responses %}
+			<li>
+			{{ r.message.text }}
+			</li>
+		{% endfor %}
+	</ul>
+
+{% else %}
+	NO ONE RESPONDED ON THE POLL:<br /> {{poll}}!!
+{% endif %}
+
+
 </div>
 {% endblock %}
 

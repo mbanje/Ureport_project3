@@ -33,10 +33,12 @@ def view_scouts_responses(req, pol):
 
     responses= Response.objects.filter(contact__groups__name='scout',poll__pk=pol)
     number_of_members= Contact.objects.count()
+    p= Poll.objects.get(pk=pol)
     template = 'ureport/scout_poll_results.html'
     return render_to_response(template, {
         'responses': responses,
-        'total_ureporters':number_of_members}
+        'total_ureporters':number_of_members,
+        'poll':p}
         )
 
    
@@ -44,18 +46,22 @@ def view_guides_responses(req, pol):
 
     responses= Response.objects.filter(contact__groups__name='guide',poll__pk=pol)
     number_of_members= Contact.objects.count()
+    p= Poll.objects.get(pk=pol)
     template = 'ureport/guide_poll_results.html'
     return render_to_response(template, {
         'responses': responses,
-        'total_ureporters':number_of_members}
+        'total_ureporters':number_of_members,
+        'poll':p}
         )
         
 def view_redcross_responses(req, pol):
 
     responses= Response.objects.filter(contact__groups__name='redcross',poll__pk=pol)
     number_of_members= Contact.objects.count()
+    p= Poll.objects.get(pk=pol)
     template = 'ureport/redcross_poll_results.html'
     return render_to_response(template, {
         'responses': responses,
-        'total_ureporters':number_of_members}
+        'total_ureporters':number_of_members,
+        'poll':p}
         )
