@@ -27,7 +27,7 @@
 <div class="redcross_results_principale">
 	
 	
-{% if poll %}
+{% if responses %}
 
 	<h2>RESPONSES OF MEMBER OF REDCROSS ON THE POLL :<br />
 	"{{poll.question}}"
@@ -41,7 +41,7 @@
 	</ul>
 
 {% else %}
-	NO ONE RESPONDED ON THE POLL:<br /> {{poll}}!!
+	NO ONE RESPONDED ON THE POLL:<br /> {{poll.question}}!!
 {% endif %}
 
 
