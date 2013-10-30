@@ -1,15 +1,22 @@
-{% extends "generic/base.html" %}
+{% extends "generic/generic_base.html" %}
+{% load ureport %}
 {% block title %}
     Messages - {{ block.super }}
 {% endblock %}
 {% block stylesheets %}
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}ureport/stylesheets/ureport.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}rapidsms/stylesheets/splits.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}rapidsms/stylesheets/modules.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}rapidsms/stylesheets/icons.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}contact/stylesheets/messages.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}ureport/stylesheets/message_log.css"/>
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}ureport/stylesheets/modal.css"/>
+	{{ block.super }}
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}rapidsms/stylesheets/splits.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}rapidsms/stylesheets/modules.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}rapidsms/stylesheets/tables.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}rapidsms/stylesheets/forms.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}rapidsms/stylesheets/icons.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}rapidsms/stylesheets/base.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap-responsive.css" />
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}ureport/stylesheets/ureport.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}contact/stylesheets/messages.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}ureport/stylesheets/message_log.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}ureport/stylesheets/modal.css"/>
 {% endblock %}
 {% block extra_js %}
 
@@ -19,20 +26,23 @@
             $('#div_action_0').find('a').html("Send Message");
         });
 
+        $('#delete_ureporter').click(function(e){
+            var conf = confirm("Are you sure you want to delete this Ureporter?");
+            if (conf != true){
+                e.preventDefault();
+            }
+        });
+
     </script>
 {% endblock %}
 {% block content %}
     <div class="module">
-        <h2>Profile for {{ contact.name }}</h2>
+        <h2>Profile for {{ contact.default_connection.pk }}</h2>
 
         <table style="font-size: 16px;">
             <tr>
-                <td>Name:</td>
-                <td>{{ contact.name }}</td>
-            </tr>
-            <tr>
-                <td>Mobile:</td>
-                <td>{{ contact.default_connection.identity }}</td>
+                <td>Identifier:</td>
+                <td>{{ contact.default_connection.pk }}</td>
             </tr>
             <tr>
                 <td>Gender:</td>
@@ -43,7 +53,7 @@
                 <td>{{ contact.age }}</td>
             </tr>
             <tr>
-                <td>District:</td>
+                <td>Province:</td>
                 <td>{{ contact.reporting_location.name }}</td>
             </tr>
             {% if contact.is_caregiver %}
@@ -62,45 +72,33 @@
                 <td>Occupation:</td>
                 <td>{{contact.occupation}}</td>
             </tr>
-
             {% endif %}
-
-
-
-
-
+			{% if contact.health_facility %}
             <tr>
                 <td>Health Facility:</td>
                 <td>{{ contact.health_facility }}</td>
             </tr>
-
-
+			{% endif %}
+			{% if contact.colline %}
             <tr>
-                <td>SubCounty:</td>
-                
-                <td>{{ contact.subcounty }}</td>
+                <td>Colline:</td>               
+                <td>{{ contact.colline }}</td>
             </tr>
-
-
-            <tr>
-                <td>Village:</td>
-                <td>{{ contact.village }}</td>
-            </tr>
+			{% endif %}
+			{% if contact.join_date %}
             <tr>
                 <td>Join Date:</td>
                 <td>{{ contact.join_date }}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td>Group(s):</td>
                 <td>
                     <ul>
                     {% for g in contact.groups.all %}
-
-                    <li>{{ g.name }}</li>
-
+                    	<li>{{ g.name }}</li>
                     {%endfor%}
                     </ul>
-
                 </td>
             </tr>
             <tr>
@@ -121,43 +119,33 @@
                     <td>{{ contact.quit_date }}</td>
                 </tr>
             {% endif %}
-
             <tr>
                 <td>Language:</td>
                 <td>
                     {% if contact.language == "" %}
-                        en
+                        {{ "en"|language_str }}
                     {% else %}
-                        {{ contact.language }}
+                        {{ contact.language|language_str }}
                     {% endif %}
                 </td>
                 <td><a href="javascript:void(0);" onclick="$('#edit_reporter').show();" class="btn">Edit Reporter</a></td>
                 <td><a href="?download=True" class="btn">Download History</a></td>
-                <td><a class="btn" href="/contact/{{ contact.pk }}/blacklist/" data-remote=true
-                       data-disable-with="blacklisting...">Blacklist</a></td>
-                <td><a class="btn" href="/contact/{{ contact.pk }}/delete/" >Delete</a></td>
-
+                <td><a class="btn" href="/contact/{{ contact.pk }}/blacklist/" data-remote=true data-disable-with="blacklisting...">Blacklist</a></td>
+                <td><a class="btn" href="{% url "delete_contact" contact.pk %}" id="delete_ureporter">Delete</a></td>
             </tr>
         </table>
-
         <div class="modal hide" id="edit_reporter">
             <form method="post" id="message_form" action="/reporter/{{contact.pk}}/edit/" data-remote=true>
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal" onclick='$(".modal").hide()'>×</a>
-
-
                     <h3>Editing {{contact.name}}</h3>
-
-
                 </div>
                 <div class="modal-body">
                     <table>
-
                         {{reporter_form.as_table}}
                         <tr>
                             <td></td>
                         </tr>
-
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -165,9 +153,7 @@
                     <input type="submit" class="btn btn-primary" value="Save Edits">
                 </div>
             </form>
-
         </div>
-
     </div>
     {{ block.super }}
 {% endblock %}
