@@ -493,5 +493,7 @@ def script_polls(request):
                    columns=columns),
               
 
-              
+
+
+         
 

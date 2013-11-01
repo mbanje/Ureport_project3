@@ -65,3 +65,24 @@ def view_redcross_responses(req, pol):
         'total_ureporters':number_of_members,
         'poll':p}
         )
+        
+       
+       
+        
+
+def view_responses_of_gp_on_poll(req, gp, pol):
+
+	responses= Response.objects.filter(contact__groups__name=gp,poll__pk=pol)
+	p= Poll.objects.get(pk=pol)
+	number_of_members= Contact.objects.count()
+	template= 'ureport/responses.html'
+	
+	return render_to_response(template, {
+        'responses': responses,
+        'total_ureporters':number_of_members,
+        'poll':p},
+        context_instance=RequestContext(req)
+        )
+	
+	
+	

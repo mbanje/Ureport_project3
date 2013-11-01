@@ -26,9 +26,12 @@ urlpatterns = patterns('',
 
 					   
 					   
-					   url(r'^responses/scouts/(\d+)/$', view_scouts_responses, name='respo_of_scouts'),
-					   url(r'^responses/guides/(\d+)/$', view_guides_responses, name='respo_of_guides'),
-					   url(r'^responses/redcross/(\d+)/$', view_redcross_responses, name='respo_of_r_c'),
+					   #url(r'^responses/scouts/(\d+)/$', view_scouts_responses, name='respo_of_scouts'),
+					   #url(r'^responses/guides/(\d+)/$', view_guides_responses, name='respo_of_guides'),
+					   #url(r'^responses/redcross/(\d+)/$', view_redcross_responses, name='respo_of_r_c'),
+					   
+					   
+					   url(r'^(?P<gp>\w+)/(?P<pol>\d+)/$', view_responses_of_gp_on_poll, name="rep"),
 					   
 					   
                        # ureporters (contact management views)
