@@ -85,7 +85,7 @@ def best_visualization2(request, gp, poll_id=None):
     responses= Response.objects.filter(contact__groups__name=gp,poll__pk=poll_id)
     #if poll.type == Poll.TYPE_TEXT and not  poll.categories.exists():
     dict_to_render.update({'tagged': True,
-                               'tags': _get_tags2(polls),
+                               'tags': _get_tags2(gp, polls),
                     'responses': Response.objects.filter(contact__groups__name=gp,poll__pk=poll_id),
                     'poll_id': poll.pk,
                     }),

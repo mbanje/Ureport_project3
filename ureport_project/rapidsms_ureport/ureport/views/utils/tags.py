@@ -83,7 +83,7 @@ def _get_tags(polls):
 
 
 
-def _get_tags2(polls):
+def _get_tags2(gp, polls):
     word_count = {}
     if isinstance(polls, types.ListType):
         p_list = [poll.pk for poll in polls]
@@ -104,7 +104,7 @@ def _get_tags2(polls):
                  ON "poll_response"."message_id"= "rapidsms_httprouter_message"."id"
            where
               poll_id in (%(polls)s)
-              and "poll_response"."contact_id" in (select co.contact_id from rapidsms_contact_groups as co where co.group_id=6)) as f
+              and "poll_response"."contact_id" in (select co.contact_id from "rapidsms_contact_groups" as co where co.group_id = (select gro.id from "auth_group" as gro where "gro"."name" = '(%(gp)s)'))) as f
         WHERE
            NOT (word in (SELECT
               "ureport_ignoredtags"."name"
@@ -112,11 +112,10 @@ def _get_tags2(polls):
               "ureport_ignoredtags"
            WHERE
               "ureport_ignoredtags"."poll_id" in (%(polls)s)))
-
         GROUP BY
            wo
         order by
-           c DESC limit 200;   """ % {'polls': poll_pks}
+           c DESC limit 200;   """ % {'polls': poll_pks, 'gp': gp}
 
     cursor = connection.cursor()
     cursor.execute(sql)
