@@ -30,7 +30,7 @@ import logging, datetime
  
 
 def view_responses_of_gp_on_poll(req, gp, pol):
-
+	
 	responses= Response.objects.filter(contact__groups__name=gp,poll__pk=pol)
 	p= Poll.objects.get(pk=pol)
 	number_of_members= Contact.objects.count()
@@ -42,6 +42,7 @@ def view_responses_of_gp_on_poll(req, gp, pol):
         'poll':p},
         context_instance=RequestContext(req)
         )
-	
+
+
 	
 	

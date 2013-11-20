@@ -19,9 +19,10 @@ from script.signals import script_progress_was_completed
 
 
 class IgnoredTags(models.Model):
+	
     poll = models.ForeignKey(Poll)
     name = models.CharField(max_length=20)
-
+		
     def __unicode__(self):
         return '%s' % self.name
 
@@ -40,6 +41,7 @@ class QuoteBox(models.Model):
         app_label = 'ureport'
 
 
+
 class TopResponses(models.Model):
     poll = models.ForeignKey(Poll, related_name="top_responses")
     quote = models.TextField()
@@ -47,6 +49,7 @@ class TopResponses(models.Model):
 
     class Meta:
         app_label = 'ureport'
+
 
 
 class EquatelLocation(models.Model):
@@ -57,6 +60,7 @@ class EquatelLocation(models.Model):
 
     class Meta:
         app_label = 'ureport'
+
 
 
 class Permit(models.Model):

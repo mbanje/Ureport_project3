@@ -25,11 +25,11 @@ urlpatterns = patterns('',
                       
 
 					   
-					   
-
-					   
-					   
+ 					 				   
+ 					   url(r'^visualize/(?P<poll_id>\d+)/$', best_visualization, name="best_viz"),
 					   url(r'^(?P<gp>\w+)/(?P<pol>\d+)/$', view_responses_of_gp_on_poll, name="rep"),
+					   
+					   
 					   
 					   
                        # ureporters (contact management views)
@@ -81,13 +81,14 @@ urlpatterns = patterns('',
                        url(r'^messagefeed/(?P<pks>\d+)/$', message_feed, name="message-feed"),
 
                        # polls page and best-visualization module (different viz based on poll type
-                       url(r'^pollresults/$', poll_summary, name="polls-summary"), \
+                       url(r'^pollresults/$', poll_summary, name="polls-summary"), 
                        url(r'^bestviz/$', best_visualization, name="best-viz"),
                        url(r'^bestviz/(?P<poll_id>\d+)/$', best_visualization, name="best-viz"),
 
                        # tag cloud views
+                     
                        url(r'^tag_cloud/$', tag_cloud, name="tagcloud"),
-                       url(r'^tag_cloud/(?P<pks>\d+)/$', tag_cloud, name="tag_cloud"),
+ 					   url(r'^tag_cloud/(?P<pks>\d+)/$', tag_cloud, name="tag_cloud"),                      
                        url(r'^add_tag/$', add_drop_word, name="add_tag"),
                        url(r'^add_tag/(?P<tag_name>.+)/(?P<poll_pk>\d+)/$', add_drop_word, name="add_tag"),
                        url(r'^delete_tag/$', delete_drop_word, name="delete_tag"),
@@ -150,6 +151,7 @@ urlpatterns = patterns('',
                        url(r'^aids_dashboard/$', aids_dashboard, name="aids-dashboard"),
                        url(r'^uncapture/(?P<pk>\d+)/$', remove_captured_ind, name="remove-captured_ind"),
                        url(r'^assign/(?P<pk>\d+)/(?P<poll>\d+)/$', assign_poll, name="remove-captured_ind"),
+                       
                        url(r'^reporter2/$', login_required(generic), {
                            'model': Ureporter,
                            'queryset': get_contacts,
