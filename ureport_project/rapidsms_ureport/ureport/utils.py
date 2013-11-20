@@ -144,6 +144,14 @@ def retrieve_poll(request, pks=None):
         return Poll.objects.filter(pk__in=[pks]).exclude(pk__in=script_polls)
 
 
+
+
+def retrieve_poll2(request, pks):
+        return Poll.objects.filter(pk=pks)
+
+
+
+
 def get_flagged_messages(**kwargs):
     return MessageFlag.objects.all()
 

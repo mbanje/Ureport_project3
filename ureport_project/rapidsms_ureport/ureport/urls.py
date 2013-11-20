@@ -26,7 +26,7 @@ urlpatterns = patterns('',
 
 					   
  					 				   
- 					   url(r'^visualize/(?P<poll_id>\d+)/$', best_visualization, name="best_viz"),
+ 					   url(r'^visualize/(?P<gp>\w+)/(?P<poll_id>\d+)/$', best_visualization2, name="best_viz"),
 					   url(r'^(?P<gp>\w+)/(?P<pol>\d+)/$', view_responses_of_gp_on_poll, name="rep"),
 					   
 					   
